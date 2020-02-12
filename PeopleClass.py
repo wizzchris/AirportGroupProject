@@ -18,3 +18,4 @@ class Passenger(People):        # passenger subclass of people
 
     def check_passport(self): # Returns the passport number
         return self.__passport
+
