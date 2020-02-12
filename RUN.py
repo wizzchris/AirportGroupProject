@@ -42,7 +42,8 @@ while True:
         print('Add a passenger')
         name = input('What is their name?\n').strip().lower()
         passportnum = input('What is their passport number?\n')
-        name = PeopleClass.Passenger(name)
+        passanger_destination = input('Where are they going?\n')
+        name = PeopleClass.Passenger(name, passanger_destination)
         name.add_passport(passportnum)
         name.add_passenger_to_flight(flights)
         passenger_database.append(name)
@@ -55,14 +56,14 @@ while True:
         for person in passenger_database:
             if person.name == passenger:
                 passenger = person
-        for flight in flight_database:
+        for flight in flights:
             if flight_destination == flight.destination:
                 flight.add_a_customer(passenger)
         print('Passenger successfully added')
 
     elif user_answer == 'boarding list':
         print('Boarding list')
-        flightdesired = input('What is the destination you want to check on?')
+        flightdesired = input('What is the destination you want to check on?\n')
         for flight in flights:
             if flightdesired == flight.destination:
                 for person in flight.boarding_list:
@@ -70,7 +71,7 @@ while True:
 
     elif user_answer == 'planes':
         for plane in plane_database:
-            print(plane.plane_id + ' ' + plane.destination)
+            print(str(plane.plane_id) + ' ' + str(plane.destination))
 
     elif user_answer == 'destinations':
         for flight in flights:
@@ -83,6 +84,7 @@ while True:
         destination = input('What is the destination?\n')
         date_time = input('What is the date and time?\n')
         name = FlightClass.Flight(airline,destination,date_time)
+        name.add_flight_num(plane_database)
         flights.append(name)
 
     else:
