@@ -20,10 +20,6 @@ class Plane:
         self.Airline = ''  # Allows the plane class to have airline
         self.manufacturer = manufacturer
         self.model = model
-        if flights == None:
-            flights = []
-        self.flights = []
-        self.taken = taken  # Check to see if plane is taken on a flight
 
     def add_flights(self, flight_list):  # Add the flights the plane is going to take
         for flight in flight_list:

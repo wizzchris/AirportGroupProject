@@ -1,8 +1,18 @@
 from FlightClass import Flight
 from PeopleClass import People, Passenger
 from PlaneClass import Plane
+import pyodbc
 
-plane_database = []
+server = 'localhost,1433'
+databse = 'AirportGroupProject'
+username = 'SA'
+password = 'Passw0rd2018'
+# Connection object of db
+docker_connect = pyodbc.connect(
+    'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse + ';UID=' + username + ';PWD=' + password)
+cursor = docker_connect.cursor()
+
+plane_database =
 
 flights = []
 
