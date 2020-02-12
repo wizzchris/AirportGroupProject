@@ -4,8 +4,10 @@ Adds a class called flight
 
 class Flight:
 
-    def __init__(self,flight_num, airline, destination, date_time, boarding_list= None, origin='London'):  #Starts class with flight number, airline, destination and date time. Allows for future creation of boarding list and origin
-        self.flight_num = flight_num
+    def __init__(self, airline, destination, date_time, boarding_list= None, origin='London'):  #Starts class with flight number, airline, destination and date time. Allows for future creation of boarding list and origin
+        self.flight_num = ''
+
+
         self.airline = airline
         self.destination = destination
         self.date_time = date_time
@@ -23,3 +25,11 @@ class Flight:
 
     def add_plane(self,plane_name_provided):
         self.plane_name = plane_name_provided
+
+    def add_flight_num(self,plane_list):
+        for plane in plane_list:
+            if plane.taken == 'no':
+                self.flight_num = plane.plane_id
+                plane.taken = 'yes'  #Checks to see if plane is taken and adds a flight number to it
+
+
