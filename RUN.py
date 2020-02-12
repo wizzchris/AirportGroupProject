@@ -84,7 +84,7 @@ while True:
         date_time = input('What is the date and time?\n')
         name = FlightClass.Flight(airline,destination,date_time)
         flights.append(name)
-        
+
     else:
         print('Please choose a valid command')
 
