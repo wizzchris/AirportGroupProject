@@ -30,6 +30,12 @@ class Flight:
                 plane.taken = 'yes'  # Checks to see if plane is taken and adds a flight number to it
 
     def return_passengers_on_flight(self):
+
+        for passenger in self.boarding_list:
+            return passenger.__passenger_id, passenger.name, passenger.__passport_no
+
+
+
         return self.boarding_list
 
     def print_passengers_on_flight(self):
@@ -37,3 +43,4 @@ class Flight:
             person_dict = self.boarding_list[i]
             print(f"ID: {person_dict._Passenger__passenger_id} || Name: {person_dict.name} || Passport #: {person_dict._Passenger__passport}")
             #rn self.boarding_list[1]
+
