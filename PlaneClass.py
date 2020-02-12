@@ -2,7 +2,6 @@
 Adds a class called plane
 """
 
-
 class Plane:
     Plane_id = 0  # Starts the id convention
 
