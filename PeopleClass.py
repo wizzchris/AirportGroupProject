@@ -23,10 +23,7 @@ class Passenger(People):        # passenger subclass of people
     def check_passport(self): # Returns the passport number
         return self.__passport
 
-<<<<<<< HEAD
-=======
+
     def check_passenger(self): # returns the passenger id
         return self.__passenger_id
 
-
->>>>>>> 674a9024fcd94ea0530b648e7d8260f056be190b
