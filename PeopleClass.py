@@ -2,7 +2,6 @@ class People:     # people class
     def __init__(self, name):   # people class has defined attribute name
         self.name = name
 
-
 class Passenger(People):        # passenger subclass of people
     __passenger_id = 0
 
@@ -23,7 +22,11 @@ class Passenger(People):        # passenger subclass of people
     def check_passport(self): # Returns the passport number
         return self.__passport
 
-
     def check_passenger(self): # returns the passenger id
         return self.__passenger_id
 
+# Tests
+# person_1 = Passenger('0', 'Bob')
+# person_1.add_passport('312313')
+# person_1.add_passenger('12441')
+# print(person_1.check_passenger())
