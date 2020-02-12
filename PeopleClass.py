@@ -18,3 +18,13 @@ class Passenger(People):        # passenger subclass of people
 
     def check_passport(self): # Returns the passport number
         return self.__passport
+
+    def add_passenger(self, passengernum): # adds a way to add a passenger to the person
+        self.__passenger_id = passengernum
+        return passengernum
+
+    def check_passport(self): # Returns the passport number
+        return self.__passport
+
+    def check_passenger(self): # returns the passenger id
+        return self.__passenger_id
