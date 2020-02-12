@@ -12,11 +12,12 @@ class Passenger(People):  # passenger subclass of people
         self.__passenger_id = Passenger.__passenger_counter  # adds 1 to the defined passenger id
         Passenger.__passenger_counter += 1  # continuously adds 1 to each new instance of a new passenger
 
-    def add_passport(self, passportnum):  # Adds a way to add a passport to the person
+  # adds a way to add a passenger to the person
+    def add_passport(self,passportnum): # adds a way to add a passport to the person
         self.__passport = passportnum
         return self.__passport
 
-    def add_passenger(self, passengernum):  # adds a way to add a passenger to the person
+    def add_passenger(self, passengernum): # adds a way to add a passenger to the person
         self.__passenger_id = passengernum
         return passengernum
 
@@ -25,3 +26,4 @@ class Passenger(People):  # passenger subclass of people
 
     def check_passenger(self):  # returns the passenger id
         return self.__passenger_id
+
