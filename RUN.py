@@ -12,11 +12,11 @@ flight_class_instance = Flight('100', 'Virgin', 'Bangaladesh', '17/02/2020')
 plane_class_instance = Plane(1000, 'Boeing', 'B141')
 
 
-# import PlaneClass
-# import PeopleClass
-# import FlightClass
+import PlaneClass
+import PeopleClass
+import FlightClass
 
-#
+
 # while True:
 #     user_answer = input('Hello, what would you like to do?\nType Help for help\nType Exit for exit').strip().lower()
 #
@@ -46,8 +46,8 @@ plane_class_instance = Plane(1000, 'Boeing', 'B141')
 #
 #     else:
 #         print('Please choose a valid command')
-#
-# flight_class_instance.add_plane('100000')
+
+flight_class_instance.add_plane('100000')
 
 
 # # TEST
