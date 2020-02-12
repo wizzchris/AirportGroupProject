@@ -27,4 +27,8 @@ class Passenger(People):  # passenger subclass of people
         return self.__passenger_id
 
     def add_passenger_to_flight(self,flight_list):  #Goes through list of flights to add passenger
+        for flight in flight_list:
+            if self.destination == flight.destination:
+                flight.boarding_list.add_a_customer(self)
 
+#change

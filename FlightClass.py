@@ -5,8 +5,7 @@ from PeopleClass import Passenger
 
 class Flight:
 
-    def __init__(self, airline, destination, date_time,
-                 origin='London'):  # Starts class with flight number, airline, destination and date time. Allows for future creation of boarding list and origin
+    def __init__(self, airline, destination, date_time,origin='London'):  # Starts class with flight number, airline, destination and date time. Allows for future creation of boarding list and origin
         self.flight_num = ''
         self.airline = airline
         self.destination = destination

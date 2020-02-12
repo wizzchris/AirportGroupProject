@@ -3,6 +3,9 @@ from PeopleClass import People, Passenger
 from PlaneClass import Plane
 
 plane_database = []
+
+flights = []
+
 passenger_database = []
 
 flight_class_instance = Flight('100', 'Virgin', 'Bangaladesh', '17/02/2020')
@@ -41,27 +44,46 @@ while True:
         passportnum = input('What is their passport number?\n')
         name = PeopleClass.Passenger(name)
         name.add_passport(passportnum)
+        name.add_passenger_to_flight(flights)
+        passenger_database.append(name)
         print('Passenger successfully added')
 
     elif user_answer == 'add passenger to flight':
         print('Adding passenger to flight manually')
         passenger = input('Who would you like to add?\n')
         flight_destination = input('What is the destination?\n')
-        for person in passengers:
+        for person in passenger_database:
             if person.name == passenger:
                 passenger = person
         for flight in flights:
             if flight_destination == flight.destination:
                 flight.add_a_customer(passenger)
+        print('Passenger successfully added')
 
     elif user_answer == 'boarding list':
-        #checks boarding list
+        print('Boarding list')
+        flightdesired = input('What is the destination you want to check on?')
+        for flight in flights:
+            if flightdesired == flight.destination:
+                for person in flight.boarding_list:
+                    print(person.name)
 
     elif user_answer == 'planes':
-        #gives list of planes as plane ids
+        for plane in plane_database:
+            print(plane.plane_id + ' ' + plane.destination)
 
     elif user_answer == 'destinations':
-        #checks destinations
+        for flight in flights:
+            print(flight.destination)
+
+    elif user_answer == 'add flight':  #__init__(self, airline, destination, date_time,origin='London'):
+        print('Add a flight')
+        name =input('Please name the flight\n')
+        airline = input('What is the airline?\n')
+        destination = input('What is the destination?\n')
+        date_time = input('What is the date and time?\n')
+        name = FlightClass.Flight(airline,destination,date_time)
+        flights.append(name)
 
     else:
         print('Please choose a valid command')
