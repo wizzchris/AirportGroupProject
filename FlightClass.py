@@ -30,3 +30,7 @@ class Flight:
 
     def add_plane(self, plane_num):
         self.flight_num = plane_num
+
+    def return_passengers_on_flight(self):
+        for passenger in self.boarding_list:
+            return passenger.__passenger_id, passenger.name, passenger.__passport_no
