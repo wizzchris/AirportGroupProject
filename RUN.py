@@ -3,12 +3,14 @@ from PeopleClass import People, Passenger
 from PlaneClass import Plane
 
 plane_database = []
-flights = []
-passengers = []
 
+flights = []
+
+passenger_database = []
 
 flight_class_instance = Flight('100', 'Virgin', 'Bangaladesh', '17/02/2020')
 
+# 1.) As a senior member of the airport staff, i want to register a plane.
 
 # As a senior member of the airport staff, i want to register a plane.
 
@@ -78,6 +80,11 @@ while True:
 
 flight_class_instance.add_plane('100000')
 
-plane_database.append(flight_class_instance)
+# TEST
+# plane_database.append(flight_class_instance)
+# print(plane_database[0].destination)
 
+
+# passenger_database.append(passenger_1_instance)
+print(passenger_database[0].name)
 print(plane_database[0].destination)
