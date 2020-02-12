@@ -12,7 +12,17 @@ docker_connect = pyodbc.connect(
     'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse + ';UID=' + username + ';PWD=' + password)
 cursor = docker_connect.cursor()
 
-plane_database =
+rows_flights = cursor.execute('SELECT * FROM Flights')
+rows_planes = cursor.execute('SELECT * FROM Flights')
+rows_passengers = cursor.execute('SELECT * FROM Flights')
+
+while True:
+    record = rows.fetchone()
+    if record == None:
+        break
+    print(record)
+
+plane_databases = []
 
 flights = []
 
@@ -74,18 +84,28 @@ while True:
     elif user_answer == 'boarding list':
         print('Boarding list')
         flightdesired = input('What is the destination you want to check on?\n')
-        for flight in flights:
-            if flightdesired == flight.destination:
-                for person in flight.boarding_list:
-                    print(person.name)
+        rows_destinations= cursor.execute('SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(flightdesired))
+        while True:
+            record = rows_destinations.fetchone()
+            if record == None:
+                break
+            print(record)
 
     elif user_answer == 'planes':
-        for plane in plane_database:
-            print(str(plane.plane_id) + ' ' + str(plane.destination))
+        rows_planes = cursor.execute('SELECT Manufacturer, Model, Plane_ID AS "Plane ID" FROM Planes')
+        while True:
+            record = rows_planes.fetchone()
+            if record == None:
+                break
+            print(record)
 
     elif user_answer == 'destinations':
-        for flight in flights:
-            print(flight.destination)
+        rows_flights = cursor.execute('SELECT Destination, Flight_Name AS "Flight Name" FROM Flights')
+        while True:
+            record = rows_flights.fetchone()
+            if record == None:
+                break
+            print(record)
 
     elif user_answer == 'add flight':  #__init__(self, airline, destination, date_time,origin='London'):
         print('Add a flight')
@@ -100,13 +120,3 @@ while True:
     else:
         print('Please choose a valid command')
 
-flight_class_instance.add_plane('100000')
-
-# TEST
-# plane_database.append(flight_class_instance)
-# print(plane_database[0].destination)
-
-
-# passenger_database.append(passenger_1_instance)
-print(passenger_database[0].name)
-print(plane_database[0].destination)
