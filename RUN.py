@@ -50,4 +50,3 @@ flight_class_instance.add_plane('100000')
 plane_database.append(flight_class_instance)
 
 print(plane_database[0].destination)
-
