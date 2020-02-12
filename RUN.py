@@ -12,11 +12,6 @@ flight_class_instance = Flight('100', 'Virgin', 'Bangaladesh', '17/02/2020')
 plane_database.append(flight_class_instance)
 print(plane_database[0].destination)
 
-
-
-
-
-
 # while True:
 #     user_answer = input('Hello, what would you like to do?\nType Help for help\nType Exit for exit').strip().lower()
 #
