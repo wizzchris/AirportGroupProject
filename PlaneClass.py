@@ -5,13 +5,6 @@ Adds a class called plane
 class Plane:
     Plane_id = 0  # Starts the id convention
 
-    def __init__(self, capacity, flights=None, taken='no'):  # Initialises class with capacity
-
-class Plane:
-    Plane_id = 0  # Starts the id convention
-
-
-
     def __init__(self, capacity, manufacturer, model, flights=None, taken='no'):  # Initialises class with capacity
         self.capacity = capacity
 
