@@ -17,3 +17,8 @@ class Plane:
         self.flights = []
         self.taken = taken #Check to see if plane is taken on a flight
 
+    def add_flights(self, flight_list):  #Add the flights the plane is going to take
+        for flight in flight_list:
+            if flight.flight_num == self.plane_id:
+                self.flights.append(flight.destination)
+
