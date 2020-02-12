@@ -2,8 +2,15 @@ from FlightClass import Flight
 from PeopleClass import People, Passenger
 from PlaneClass import Plane
 
+plane_database = []
+
+
+flight_class_instance = Flight('100', 'Virgin', 'Bangaladesh', '17/02/2020')
+
+
 # As a senior member of the airport staff, i want to register a plane.
+flight_class_instance.add_plane('100000')
 
-flight_class_instance = Flight()
+plane_database.append(flight_class_instance)
 
-flight_class_instance.add_plane('Airbus A220')
+print(plane_database[0].destination)
