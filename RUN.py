@@ -50,12 +50,12 @@ plane_class_instance = Plane(1000, 'Boeing', 'B141')
 # flight_class_instance.add_plane('100000')
 
 
-# TEST
-plane_database.append(flight_class_instance)
-print(plane_database[0].destination)
-
-
-passenger_database.append(passenger_1_instance)
-
-print(passenger_database.name)
-print(plane_database.destination)
+# # TEST
+# plane_database.append(flight_class_instance)
+# print(plane_database[0].destination)
+#
+#
+# passenger_database.append(passenger_1_instance)
+#
+# print(passenger_database.name)
+# print(plane_database.destination)
