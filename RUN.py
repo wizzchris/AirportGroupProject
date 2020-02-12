@@ -47,10 +47,10 @@ while True:
         print('Adding passenger to flight manually')
         passenger = input('Who would you like to add?\n')
         flight_destination = input('What is the destination?\n')
-        for person in passengers:
+        for person in passenger_database:
             if person.name == passenger:
                 passenger = person
-        for flight in flights:
+        for flight in flight_database:
             if flight_destination == flight.destination:
                 flight.add_a_customer(passenger)
 
