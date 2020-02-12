@@ -45,13 +45,14 @@ while True:
         name = PeopleClass.Passenger(name)
         name.add_passport(passportnum)
         name.add_passenger_to_flight(flights)
+        passenger_database.append(name)
         print('Passenger successfully added')
 
     elif user_answer == 'add passenger to flight':
         print('Adding passenger to flight manually')
         passenger = input('Who would you like to add?\n')
         flight_destination = input('What is the destination?\n')
-        for person in passengers:
+        for person in passenger_database:
             if person.name == passenger:
                 passenger = person
         for flight in flights:
@@ -75,6 +76,15 @@ while True:
         for flight in flights:
             print(flight.destination)
 
+    elif user_answer == 'add flight':  #__init__(self, airline, destination, date_time,origin='London'):
+        print('Add a flight')
+        name =input('Please name the flight\n')
+        airline = input('What is the airline?\n')
+        destination = input('What is the destination?\n')
+        date_time = input('What is the date and time?\n')
+        name = FlightClass.Flight(airline,destination,date_time)
+        flights.append(name)
+        
     else:
         print('Please choose a valid command')
 
