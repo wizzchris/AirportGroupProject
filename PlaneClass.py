@@ -33,10 +33,13 @@ class Plane:
         self.manufacturer = manufacturer
         self.model = model
 
-        cursor.execute("INSERT INTO Planes (Capacity, Manufacturer, Model, Flights, Taken, Plane_ID, Airline)VALUES "
-                       "('" + str(self.capacity) + "', '" + str(self.manufacturer) + "', '" + str(self.model) + "', '" +
-                       flights_sql + "', '" + str(self.taken) + "', '" + str(self.plane_id) + "', '"
-                       + airline_sql + "')")  #Adds a new row to the database in table planes
+
+        cursor.execute(
+            "INSERT INTO Planes (Capacity, Manufacturer, Model, Flights, Taken, Plane_ID, Airline)VALUES ('" + str(
+                self.capacity) + "', '" + str(self.manufacturer) + "', '" + str(
+                self.model) + "', '" + flights_sql + "', '" + str(self.taken) + "', '" + str(
+                self.plane_id) + "', '" + airline_sql + "')")  # Adds a new row to the database in table planes
+
 
     def add_flights(self, flight_list):  # Add the flights the plane is going to take
         for flight in flight_list:
@@ -46,3 +49,4 @@ class Plane:
             cursor.execute(
                 'INSERT INTO Planes VALUES (' + self.capacity + ', ' + self.manufacturer + ', ' + self.model + ', ' + flight + ', ' + self.taken + ', ' + self.plane_id + ', ' + self.Airline + ')')
 
+#change
