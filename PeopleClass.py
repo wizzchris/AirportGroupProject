@@ -14,6 +14,9 @@ class People:  # people class
     def __init__(self, name):  # people class has defined attribute name
         self.name = name
 
+    # create example method to polymorth
+    # identify
+
 class Passenger(People):  # passenger subclass of people
 
 
