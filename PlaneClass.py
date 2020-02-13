@@ -3,6 +3,7 @@ Adds a class called plane
 """
 import pyodbc
 
+<<<<<<< HEAD
 server = 'localhost,1433'
 databse = 'AirportGroupProject'
 username = 'SA'
@@ -11,6 +12,7 @@ password = 'Passw0rd2018'
 docker_connect = pyodbc.connect(
     'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse + ';UID=' + username + ';PWD=' + password)
 cursor = docker_connect.cursor()
+
 
 class Plane:
     Plane_id = 0  # Starts the id convention
