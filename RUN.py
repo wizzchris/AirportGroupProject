@@ -27,7 +27,6 @@ while True:
 
     elif user_answer == 'help':
         print(
-<<<<<<< HEAD
             'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n '
             '2.) Type "Add passenger" to add a new passenger\n '
             '3.) Type "Add passenger to flight" to add a passenger to a flight manually\n '
@@ -35,9 +34,16 @@ while True:
             '5.) Type "Planes" to check the planes\n '
             '6.) Type "Destinations" to check the flights\n '
             '7.) Type "Add Flight" to add a flight')
-=======
-            'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n 2.) Type "Add passenger" to add a new passenger\n 3.) Type "Add passenger to flight" to add a passenger to a flight manually\n 4.) Type "Boarding list" to see the boarding list\n 5.) Type "Planes" to check the planes\n 6.) Type "Destinations" to check the flights\n 7.) Type "Add Flight" to add a flight\n 8.) Type "Remove Flight" to remove a flight\n 9.) Type "Remove plane" to remove the plane')
->>>>>>> master
+
+            'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n ' \
+            '2.) Type "Add passenger" to add a new passenger\n ' \
+            '3.) Type "Add passenger to flight" to add a passenger to a flight manually\n ' \
+            '4.) Type "Boarding list" to see the boarding list\n ' \
+            '5.) Type "Planes" to check the planes\n ' \
+            '6.) Type "Destinations" to check the flights\n ' \
+            '7.) Type "Add Flight" to add a flight\n ' \
+            '8.) Type "Remove Flight" to remove a flight\n' \
+            '9.) Type "Remove plane" to remove the plane')
 
     elif user_answer == 'register plane':  # def __init__(self, capacity, manufacturer, model, flights=None, taken='no'):
         print('Register a plane')
@@ -96,7 +102,7 @@ while True:
             record = rows_planes.fetchone()
             if record == None:
                 break
-            print(record)
+            print(record[2], + ' - ' + record[1] + ' - ' + record[0])
 
     elif user_answer == 'destinations':
 
