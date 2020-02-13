@@ -96,13 +96,13 @@ while True:
     elif user_answer == 'boarding list':
         print('Boarding list')
         flight_desired = input('What is the flight number?\n')
-        if globals()[flight_desired] ==
-        # rows_destinations= cursor.execute('SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(flightdesired))
-        # while True:
-        #     record = rows_destinations.fetchone()
-        #     if record == None:
-        #         break
-        #     print(record)
+
+        rows_destinations= cursor.execute('SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(flightdesired))
+        while True:
+            record = rows_destinations.fetchone()
+            if record == None:
+                break
+            print(record)
 
     elif user_answer == 'planes':
         rows_planes = cursor.execute('SELECT Manufacturer, Model, Plane_ID AS "Plane ID" FROM Planes')
