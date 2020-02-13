@@ -115,14 +115,9 @@ while True:
             record = rows_planes.fetchone()
             if record == None:
                 break
-            print(record)
+            print(record[2], + ' - ' + record[1] + ' - ' + record[0])
 
     elif user_answer == 'destinations':
-<<<<<<< HEAD
-        for flight in flights:
-            print(flight.destination)
-=======
->>>>>>> 59ce28d1dc10ef0d526ff9f92f8df0b695ed8f9c
         rows_flights = cursor.execute('SELECT Destination, Flight_Name AS "Flight Name" FROM Flights')
         while True:
             record = rows_flights.fetchone()
