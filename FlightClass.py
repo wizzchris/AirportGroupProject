@@ -2,6 +2,17 @@
 Adds a class called flight
 """""
 from PeopleClass import Passenger
+import pyodbc
+
+server = 'localhost,1433'
+databse = 'AirportGroupProject'
+username = 'SA'
+password = 'Passw0rd2018'
+# Connection object of db called Airport Group Project
+docker_connect = pyodbc.connect(
+    'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse + ';UID=' + username + ';PWD=' + password)
+cursor = docker_connect.cursor()
+
 
 class Flight:
 
@@ -13,6 +24,7 @@ class Flight:
         self.boarding_list = []
         self.origin = origin
         self.plane_name = 'No Name Assigned'
+        cursor.execute("INSERT INTO Flights (Airline, Destination, Date_Time, Origin, Flight_Name, Plane_Name) VALUES ('" + str(self.airline) + "', '" + str(self.destination) + "', '" + str(self.date_time) + "', '" + str(self.origin) + "', '" + str(self.flight_num) + "', '" + str(self.plane_name) + "')")
 
     def add_customers(self, customer_list):  # Starts a class method which adds multiple customers as a list
         self.boarding_list.extend(customer_list)
