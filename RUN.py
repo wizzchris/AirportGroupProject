@@ -96,10 +96,12 @@ while True:
 
     elif user_answer == 'boarding list':
         print('Boarding list')
+        rows_destinations= cursor.execute('SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(flightdesired))
         flightdesired = input('What is the destination you want to check on?\n')
         rows_destinations = cursor.execute(
             'SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(
                 flightdesired))
+
         while True:
             record = rows_destinations.fetchone()
             if record == None:
