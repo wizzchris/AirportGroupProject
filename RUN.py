@@ -59,17 +59,18 @@ while True:
 
     elif user_answer == 'help':
         print(
-            'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n 2.) Type "Add passenger" to add a new passenger\n 3.) Type "Add passenger" to flight to add a passenger to a flight manually\n 4.) Type "Boarding list" to see the boarding list\n 5.) Type "Planes" to check the planes\n 6.) Type "Destinations" to check the flights')
+            'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n 2.) Type "Add passenger" to add a new passenger\n 3.) Type "Add passenger to flight" to add a passenger to a flight manually\n 4.) Type "Boarding list" to see the boarding list\n 5.) Type "Planes" to check the planes\n 6.) Type "Destinations" to check the flights\n 7.) Type "Add Flight" to add a flight')
 
     elif user_answer == 'register plane':  # def __init__(self, capacity, manufacturer, model, flights=None, taken='no'):
         print('Register a plane')
-        name = input('Please name the plane.\n').strip().lower()
+        # input('Please name the plane.\n').strip().lower()
         capacity = input('What is the capacity of the plane?\n').strip().lower()
         manufacturer = input('Who is the manufacturer?\n').strip().lower()
         model = input('What is the model?\n').strip().lower()
-        name = Plane(capacity, manufacturer, model)
+        plane1 = Plane(capacity, manufacturer, model)
+        plane1.add_to_sql()
         print('Plane successfully added')
-        plane_database.append(name)
+        plane_database.append(plane1)
 
     elif user_answer == 'add passenger':  # def __init__(self, name)
         print('Add a passenger')
@@ -96,10 +97,12 @@ while True:
 
     elif user_answer == 'boarding list':
         print('Boarding list')
+        rows_destinations= cursor.execute('SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(flightdesired))
         flightdesired = input('What is the destination you want to check on?\n')
         rows_destinations = cursor.execute(
             'SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(
                 flightdesired))
+
         while True:
             record = rows_destinations.fetchone()
             if record == None:
@@ -115,8 +118,11 @@ while True:
             print(record)
 
     elif user_answer == 'destinations':
+<<<<<<< HEAD
         for flight in flights:
             print(flight.destination)
+=======
+>>>>>>> 59ce28d1dc10ef0d526ff9f92f8df0b695ed8f9c
         rows_flights = cursor.execute('SELECT Destination, Flight_Name AS "Flight Name" FROM Flights')
         while True:
             record = rows_flights.fetchone()
