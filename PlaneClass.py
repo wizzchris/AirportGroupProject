@@ -19,27 +19,27 @@ class Plane:
     def __init__(self, capacity, manufacturer, model, flights=None, taken='no'):  # Initialises class with capacity
         self.capacity = capacity
         self.plane_id = 'A-P-' + str(Plane.Plane_id)  # Adds the plane id
-        Plane.Plane_id += 1  # Adds 1 to the id after creation
-        self.Airline = ''  # Allows the plane class to have airline
         if flights is None:
             flights = []
             flights_sql = 'Null'
         self.flights = flights
+        self.flights_sql = flights_sql
         self.taken = taken  # Check to see if plane is taken on a flight
         self.plane_id = 'A-P-' + str(Plane.Plane_id)  # Adds the plane id
         Plane.Plane_id += 1  # Adds 1 to the id after creation
         self.Airline = ''
-        airline_sql = 'Null'  # Allows the plane class to have airline
+        self.airline_sql = 'Null'  # Allows the plane class to have airline
         self.manufacturer = manufacturer
         self.model = model
 
 
+    def add_to_sql(self):
         cursor.execute(
             "INSERT INTO Planes (Capacity, Manufacturer, Model, Flights, Taken, Plane_ID, Airline)VALUES ('" + str(
                 self.capacity) + "', '" + str(self.manufacturer) + "', '" + str(
-                self.model) + "', '" + flights_sql + "', '" + str(self.taken) + "', '" + str(
-                self.plane_id) + "', '" + airline_sql + "')")  # Adds a new row to the database in table planes
-
+                self.model) + "', '" + self.flights_sql + "', '" + str(self.taken) + "', '" + str(
+                self.plane_id) + "', '" + self.airline_sql + "')")  # Adds a new row to the database in table planes
+        docker_connect.commit()
 
     def add_flights(self, flight_list):  # Add the flights the plane is going to take
         for flight in flight_list:
