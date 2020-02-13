@@ -30,12 +30,11 @@ class Passenger(People):  # passenger subclass of people
     def add_passport(self, passportnum):  # adds a way to add a passport to the person
         __passport_sql = 'Null'
         self.__passenger_id_id = 'A-P-' + str(Passenger.__passenger_id)
-<<<<<<< HEAD
+
         Passenger.__passenger_id += 1   # continuously adds 1 to each new instance of a new passenger making it unique
         self.destination = destination
-=======
+
         Passenger.__passenger_id += 1   # continuously adds 1 to each new instance of a new passenger
->>>>>>> 59ce28d1dc10ef0d526ff9f92f8df0b695ed8f9c
 
         cursor.execute("INSERT INTO Customers VALUES "
                        "('" + str(self.name) + "', '" + str(self.destination) + "',  " + __passport_sql + ", + '" +
