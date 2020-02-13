@@ -25,9 +25,10 @@ class Passenger(People):        # passenger subclass of people
         self.__passenger_id_id = 'A-P-' + str(Passenger.__passenger_id)
         Passenger.__passenger_id += 1   # continuously adds 1 to each new instance of a new passenger
         self.destination = destination
-
-        cursor.execute("INSERT INTO Customers VALUES (name, destination, passport, passenger_id)"
-                       "('" + str(self.name) + "', '" + str(self.destination) + "',  '" + __passport_sql + "')")
+    
+        cursor.execute("INSERT INTO Customers VALUES "
+                       "('" + str(self.name) + "', '" + str(self.destination) + "',  " + __passport_sql + ", + '" +
+                       str(self.__passenger_id) + "')")
 
         # customer to table
 
