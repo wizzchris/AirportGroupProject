@@ -8,7 +8,7 @@
 # Customername VARCHAR(255),
 # Destination VARCHAR(255),
 # Passport VARCHAR(255),
-# ID VARCHAR(255))
+# ID VARCHAR(255))hel
 #
 # CREATE TABLE Planes
 # (
