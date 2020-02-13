@@ -3,14 +3,13 @@ Adds a class called plane
 """
 import pyodbc
 
-<<<<<<< HEAD
 server = 'localhost,1433'
-databse = 'AirportGroupProject'
+database = 'AirportGroupProject'
 username = 'SA'
 password = 'Passw0rd2018'
 # Connection object of db
 docker_connect = pyodbc.connect(
-    'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse + ';UID=' + username + ';PWD=' + password)
+    'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
 cursor = docker_connect.cursor()
 
 

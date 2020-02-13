@@ -7,7 +7,7 @@ class Passenger(People):        # passenger subclass of people
 
     __passenger_id = 0
 
-    def __init__(self,name, destination):
+    def __init__(self, name, destination):
         super().__init__(name)      # super to give subclass inheritance to main class
         self.__passport = ''
         self.__passenger_id += 1    # adds 1 to the defined passenger id

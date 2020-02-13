@@ -91,10 +91,10 @@ while True:
     elif user_answer == 'boarding list':
         print('Boarding list')
         flightdesired = input('What is the destination you want to check on?\n')
-        rows_destinations= cursor.execute('SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(flightdesired))
+        rows_destinations = cursor.execute('SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(flightdesired))
         while True:
             record = rows_destinations.fetchone()
-            if record == None:
+            if record is None:
                 break
             print(record)
 
@@ -102,7 +102,7 @@ while True:
         rows_planes = cursor.execute('SELECT Manufacturer, Model, Plane_ID AS "Plane ID" FROM Planes')
         while True:
             record = rows_planes.fetchone()
-            if record == None:
+            if record is None:
                 break
             print(record)
 
@@ -116,7 +116,7 @@ while True:
 
     elif user_answer == 'add flight':  #__init__(self, airline, destination, date_time,origin='London'):
         print('Add a flight')
-        name =input('Please name the flight\n')
+        name = input('Please name the flight\n')
         airline = input('What is the airline?\n')
         destination = input('What is the destination?\n')
         date_time = input('What is the date and time?\n')
