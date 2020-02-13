@@ -1,9 +1,14 @@
+# DROP TABLE Customers
+# DROP TABLE Planes
+# DROP TABLE Flights
+#
+#
 # CREATE TABLE Customers
 # (
 # Customername VARCHAR(255),
 # Destination VARCHAR(255),
 # Passport VARCHAR(255),
-# ID INT)
+# ID VARCHAR(255))hel
 #
 # CREATE TABLE Planes
 # (
@@ -12,7 +17,7 @@
 # Model VARCHAR(255),
 # Flights VARCHAR(255),
 # Taken VARCHAR(255),
-# Plane_ID INT,
+# Plane_ID VARCHAR(255),
 # Airline VARCHAR(255))
 #
 # CREATE TABLE Flights
@@ -107,12 +112,14 @@ while True:
             print(record)
 
     elif user_answer == 'destinations':
-        rows_flights = cursor.execute('SELECT Destination, Flight_Name AS "Flight Name" FROM Flights')
-        while True:
-            record = rows_flights.fetchone()
-            if record == None:
-                break
-            print(record)
+        for flight in flights:
+            print(flight.destination)
+        # rows_flights = cursor.execute('SELECT Destination, Flight_Name AS "Flight Name" FROM Flights')
+        # while True:
+        #     record = rows_flights.fetchone()
+        #     if record == None:
+        #         break
+        #     print(record)
 
     elif user_answer == 'add flight':  #__init__(self, airline, destination, date_time,origin='London'):
         print('Add a flight')
