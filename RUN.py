@@ -1,7 +1,36 @@
+# CREATE TABLE Customers
+# (
+# Customername VARCHAR(255),
+# Destination VARCHAR(255),
+# Passport VARCHAR(255),
+# ID INT)
+#
+# CREATE TABLE Planes
+# (
+# Capacity VARCHAR(255),
+# Manufacturer VARCHAR(255),
+# Model VARCHAR(255),
+# Flights VARCHAR(255),
+# Taken VARCHAR(255),
+# Plane_ID INT,
+# Airline VARCHAR(255))
+#
+# CREATE TABLE Flights
+# (
+# Airline VARCHAR(255),
+# Destination VARCHAR(255),
+# Date_Time VARCHAR(255),
+# Origin VARCHAR(255),
+# Flight_Name VARCHAR(255),
+# Boarding_List VARCHAR(255),
+# Plane_Name VARCHAR(255))
+
 from FlightClass import Flight
 from PeopleClass import People, Passenger
 from PlaneClass import Plane
 import pyodbc
+
+#How do we put objects into a database
 
 server = 'localhost,1433'
 databse = 'AirportGroupProject'
@@ -12,78 +41,19 @@ docker_connect = pyodbc.connect(
     'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse + ';UID=' + username + ';PWD=' + password)
 cursor = docker_connect.cursor()
 
-rows_flights = cursor.execute('SELECT * FROM Flights')
-rows_planes = cursor.execute('SELECT * FROM Flights')
-rows_passengers = cursor.execute('SELECT * FROM Flights')
-
-while True:
-    record = rows.fetchone()
-    if record == None:
-        break
-    print(record)
-
-plane_databases = []
-
+plane_database = []
+passenger_database = []
 flights = []
 
-passenger_database = []
-
-# 1.) As a senior member of the airport staff, i want to register a plane.
-
-
-# 0.) As a senior member of the airport staff, i want to register a plane.
-
-flight_class_instance = Flight('100', 'Virgin', 'Bangaladesh', '17/02/2020')
-plane_database.append(flight_class_instance)
-flight_class_instance = Flight('100', 'Virgin', 'Bangaladesh', '17/02/2020')
-
-# 2.) I want to register a plane
-plane_class_instance = Plane(1000, 'Boeing', 'B141')
-
-
-import PlaneClass
-import PeopleClass
-import FlightClass
-
-
-# while True:
-#     user_answer = input('Hello, what would you like to do?\nType Help for help\nType Exit for exit').strip().lower()
-#
-#     if user_answer == 'exit':
-#         break
-#
-#     elif user_answer == 'help':
-#         print('The Commands\nHelp for help\nExit to break')
-#
-#     elif user_answer == 'register plane':
-#         #adds a plane
-#
-#     elif user_answer == 'add passenger':
-#         #adds passenger
-#
-#     elif user_answer == 'add passenger to flight':
-#         #adds passenger to flight
-#
-#     elif user_answer == 'boarding list':
-#         #checks boarding list
-#
-#     elif user_answer == 'planes':
-#         #gives list of planes as plane ids
-#
-#     elif user_answer == 'destinations':
-#         #checks destinations
-#
-#     else:
-#         print('Please choose a valid command')
 
 while True:
-    user_answer = input('Hello, what would you like to do?\nType Help for help\nType Exit for exit\n').strip().lower()
+    user_answer = input('Hello, what would you like to do?\nType "Help" for help\nType "Exit" for exit\n\n>>> ').strip().lower()
 
     if user_answer == 'exit':
         break
 
     elif user_answer == 'help':
-        print('The Commands\nHelp for help\nExit to break\nRegister plane to add a new plane\nAdd passenger to add a new passenger\nAdd passenger to flight to add a passenger to a flight manually\nBoarding list to see the boarding list\nPlanes to check the planes\nDestinations to check the flights')
+        print('The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n 2.) Type "Add passenger" to add a new passenger\n 3.) Type "Add passenger" to flight to add a passenger to a flight manually\n 4.) Type "Boarding list" to see the boarding list\n 5.) Type "Planes" to check the planes\n 6.) Type "Destinations" to check the flights')
 
     elif user_answer == 'register plane':  #def __init__(self, capacity, manufacturer, model, flights=None, taken='no'):
         print('Register a plane')
@@ -91,7 +61,7 @@ while True:
         capacity = input('What is the capacity of the plane?\n').strip().lower()
         manufacturer = input('Who is the manufacturer?\n').strip().lower()
         model = input('What is the model?\n').strip().lower()
-        name = PlaneClass.Plane(capacity,manufacturer,model)
+        name =Plane(capacity,manufacturer,model)
         print('Plane successfully added')
         plane_database.append(name)
 
@@ -100,7 +70,7 @@ while True:
         name = input('What is their name?\n').strip().lower()
         passportnum = input('What is their passport number?\n')
         passanger_destination = input('Where are they going?\n')
-        name = PeopleClass.Passenger(name, passanger_destination)
+        name =Passenger(name, passanger_destination)
         name.add_passport(passportnum)
         name.add_passenger_to_flight(flights)
         passenger_database.append(name)
@@ -150,7 +120,7 @@ while True:
         airline = input('What is the airline?\n')
         destination = input('What is the destination?\n')
         date_time = input('What is the date and time?\n')
-        name = FlightClass.Flight(airline,destination,date_time)
+        name = Flight(airline,destination,date_time)
         name.add_flight_num(plane_database)
         flights.append(name)
 

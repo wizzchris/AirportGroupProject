@@ -1,6 +1,18 @@
 """
 Adds a class called plane
 """
+import pyodbc
+
+<<<<<<< HEAD
+server = 'localhost,1433'
+databse = 'AirportGroupProject'
+username = 'SA'
+password = 'Passw0rd2018'
+# Connection object of db
+docker_connect = pyodbc.connect(
+    'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse + ';UID=' + username + ';PWD=' + password)
+cursor = docker_connect.cursor()
+
 
 class Plane:
     Plane_id = 0  # Starts the id convention
@@ -19,6 +31,8 @@ class Plane:
         self.Airline = ''  # Allows the plane class to have airline
         self.manufacturer = manufacturer
         self.model = model
+
+        cursor.execute('INSERT INTO Planes VALUES (' + self.capacity + ', ' + self.manufacturer + ', ' + self.model + ', ' + self.flights + ', ' + self.taken + ', ' + self.plane_id + )
 
     def add_flights(self, flight_list):  # Add the flights the plane is going to take
         for flight in flight_list:
