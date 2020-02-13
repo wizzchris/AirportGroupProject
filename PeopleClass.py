@@ -30,5 +30,3 @@ class Passenger(People):  # passenger subclass of people
         for flight in flight_list:
             if self.destination == flight.destination:
                 flight.boarding_list.add_a_customer(self)
-
-#change
