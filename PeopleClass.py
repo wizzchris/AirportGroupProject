@@ -1,4 +1,4 @@
-import pyodbc
+import pyodbc       # to use database methods
 
 server = 'localhost,1433'
 databse = 'AirportGroupProject'
@@ -7,11 +7,12 @@ password = 'Passw0rd2018'
 # Connection object of db
 docker_connect = pyodbc.connect(
     'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse + ';UID=' + username +
-    ';PWD=' + password)
-cursor = docker_connect.cursor()
+    ';PWD=' + password)         # connecting to Microsoft SQL Server
+cursor = docker_connect.cursor()    # created cursor which will run commands on SQL through python
 
 class People:  # people class
-    def __init__(self, name):  # people class has defined attribute name
+
+    def __init__(self, name):  # people class method which is called when memory is allocated to new object
         self.name = name
 
 class Passenger(People):        # passenger subclass of people
@@ -23,34 +24,21 @@ class Passenger(People):        # passenger subclass of people
         self.__passport = ''
         __passport_sql = 'Null'
         self.__passenger_id_id = 'A-P-' + str(Passenger.__passenger_id)
-        Passenger.__passenger_id += 1   # continuously adds 1 to each new instance of a new passenger
+        Passenger.__passenger_id += 1   # continuously adds 1 to each new instance of a new passenger making it unique
         self.destination = destination
 
         cursor.execute("INSERT INTO Customers VALUES "
                        "('" + str(self.name) + "', '" + str(self.destination) + "',  " + __passport_sql + ", + '" +
-                       str(self.__passenger_id) + "')")
+                       str(self.__passenger_id) + "')")     # executing code to SQL
 
-#change        # customer to table
+    # Methods
 
-
-  # Method to add a passenger to the person
     def add_passport(self,passportnum): # adds a way to add a passport to the person
         self.__passport = passportnum
         return self.__passport
 
-
     def check_passport(self): # Returns the passport number
         return self.__passport
-
-
-    def check_passenger(self): # returns the passenger id
-        return self.__passenger_id
-
-# Tests
-# person_1 = Passenger('0', 'Bob')
-# person_1.add_passport('312313')
-# person_1.add_passenger('12441')
-# print(person_1.check_passenger())
 
     def check_passenger(self):  # returns the passenger id
         return self.__passenger_id
