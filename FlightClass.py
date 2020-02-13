@@ -13,8 +13,6 @@ docker_connect = pyodbc.connect(
     'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse + ';UID=' + username + ';PWD=' + password)
 cursor = docker_connect.cursor()
 
-
-
 class Flight:
 
     def __init__(self, airline, destination, date_time,
