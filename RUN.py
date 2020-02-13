@@ -1,41 +1,8 @@
-# DROP TABLE Customers
-# DROP TABLE Planes
-# DROP TABLE Flights
-#
-#
-# CREATE TABLE Customers
-# (
-# Customername VARCHAR(255),
-# Destination VARCHAR(255),
-# Passport VARCHAR(255),
-# ID VARCHAR(255))hel
-#
-# CREATE TABLE Planes
-# (
-# Capacity VARCHAR(255),
-# Manufacturer VARCHAR(255),
-# Model VARCHAR(255),
-# Flights VARCHAR(255),
-# Taken VARCHAR(255),
-# Plane_ID VARCHAR(255),
-# Airline VARCHAR(255))
-#
-# CREATE TABLE Flights
-# (
-# Airline VARCHAR(255),
-# Destination VARCHAR(255),
-# Date_Time VARCHAR(255),
-# Origin VARCHAR(255),
-# Flight_Name VARCHAR(255),
-# Boarding_List VARCHAR(255),
-# Plane_Name VARCHAR(255))
 
 from FlightClass import Flight
 from PeopleClass import People, Passenger
 from PlaneClass import Plane
 import pyodbc
-
-# How do we put objects into a database
 
 server = 'localhost,1433'
 databse = 'AirportGroupProject'
@@ -43,7 +10,8 @@ username = 'SA'
 password = 'Passw0rd2018'
 # Connection object of db
 docker_connect = pyodbc.connect(
-    'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse + ';UID=' + username + ';PWD=' + password)
+    'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse +
+    ';UID=' + username + ';PWD=' + password)
 cursor = docker_connect.cursor()
 
 plane_database = []
@@ -59,7 +27,23 @@ while True:
 
     elif user_answer == 'help':
         print(
-            'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n 2.) Type "Add passenger" to add a new passenger\n 3.) Type "Add passenger to flight" to add a passenger to a flight manually\n 4.) Type "Boarding list" to see the boarding list\n 5.) Type "Planes" to check the planes\n 6.) Type "Destinations" to check the flights\n 7.) Type "Add Flight" to add a flight\n 8.) Type "Remove Flight" to remove a flight\n 9.) Type "Remove plane" to remove the plane')
+            'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n '
+            '2.) Type "Add passenger" to add a new passenger\n '
+            '3.) Type "Add passenger to flight" to add a passenger to a flight manually\n '
+            '4.) Type "Boarding list" to see the boarding list\n '
+            '5.) Type "Planes" to check the planes\n '
+            '6.) Type "Destinations" to check the flights\n '
+            '7.) Type "Add Flight" to add a flight')
+
+        'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n ' \
+            '2.) Type "Add passenger" to add a new passenger\n ' \
+            '3.) Type "Add passenger to flight" to add a passenger to a flight manually\n ' \
+            '4.) Type "Boarding list" to see the boarding list\n ' \
+            '5.) Type "Planes" to check the planes\n ' \
+            '6.) Type "Destinations" to check the flights\n ' \
+            '7.) Type "Add Flight" to add a flight\n ' \
+            '8.) Type "Remove Flight" to remove a flight\n' \
+            '9.) Type "Remove plane" to remove the plane'
 
     elif user_answer == 'register plane':  # def __init__(self, capacity, manufacturer, model, flights=None, taken='no'):
         print('Register a plane')
@@ -67,46 +51,49 @@ while True:
         capacity = input('What is the capacity of the plane?\n').strip().lower()
         manufacturer = input('Who is the manufacturer?\n').strip().lower()
         model = input('What is the model?\n').strip().lower()
-        plane1 = Plane(capacity, manufacturer, model)
+        plane1 = Plane(capacity, manufacturer, model)       # user input creates an instance of a Plane
         plane1.add_to_sql()
         print('Plane successfully added')
-        plane_database.append(plane1)
+        plane_database.append(plane1)       # new plane is appended onto plane list
 
     elif user_answer == 'add passenger':  # def __init__(self, name)
         print('Add a passenger')
         name = input('What is their name?\n').strip().lower()
         passportnum = input('What is their passport number?\n')
         passanger_destination = input('Where are they going?\n')
-        name = Passenger(name, passanger_destination)
-        name.add_passport(passportnum)
+        name = Passenger(name, passanger_destination)       # user input creates an instance of a Passenger
+        name.add_passport(passportnum)      # method to add passport to passenger
         name.add_passenger_to_flight(flights)
-        passenger_database.append(name)
+        passenger_database.append(name)     # new passenger is appended onto the passenger list
         print('Passenger successfully added')
 
     elif user_answer == 'add passenger to flight':
         print('Adding passenger to flight manually')
         passenger = input('Who would you like to add?\n')
         flight_destination = input('What is the destination?\n')
-        for person in passenger_database:
+        for person in passenger_database:       # iterates over each person in the passenger list and assigns the name to the person
             if person.name == passenger:
                 passenger = person
-        for flight in flights:
+        for flight in flights:      # iterates over each flight in the flight list
             if flight_destination == flight.destination:
-                flight.add_a_customer(passenger)
+                flight.add_a_customer(passenger)  # class method which adds multiple customers as a list
         print('Passenger successfully added')
 
     elif user_answer == 'boarding list':
         print('Boarding list')
-        rows_destinations= cursor.execute('SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(flightdesired))
+        rows_destinations= cursor.execute('SELECT Destination, Flight_Name AS "Flight Name", '
+                                          'Boarding_List AS "Boarding List" '
+                                          'FROM Flights WHERE Destination = {}'.format(flightdesired)) #SQL Query
         flightdesired = input('What is the destination you want to check on?\n')
         rows_destinations = cursor.execute(
-            'SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" FROM Flights WHERE Destination = {}'.format(
+            'SELECT Destination, Flight_Name AS "Flight Name", Boarding_List AS "Boarding List" ' #SQL Query
+            'FROM Flights WHERE Destination = {}'.format(
                 flightdesired))
 
         while True:
             record = rows_destinations.fetchone()
             if record == None:
-                break
+                break       # fetches every row on sql database until theres no more rows - saves memory
             print(record)
 
     elif user_answer == 'planes':
@@ -118,6 +105,10 @@ while True:
             print(record[2], + ' - ' + record[1] + ' - ' + record[0])
 
     elif user_answer == 'destinations':
+
+        for flight in flights:
+            print(flight.destination)
+
         rows_flights = cursor.execute('SELECT Destination, Flight_Name AS "Flight Name" FROM Flights')
         while True:
             record = rows_flights.fetchone()
