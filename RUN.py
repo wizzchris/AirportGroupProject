@@ -118,14 +118,12 @@ while True:
             print(record)
 
     elif user_answer == 'destinations':
-        for flight in flights:
-            print(flight.destination)
-        # rows_flights = cursor.execute('SELECT Destination, Flight_Name AS "Flight Name" FROM Flights')
-        # while True:
-        #     record = rows_flights.fetchone()
-        #     if record == None:
-        #         break
-        #     print(record)
+        rows_flights = cursor.execute('SELECT Destination, Flight_Name AS "Flight Name" FROM Flights')
+        while True:
+            record = rows_flights.fetchone()
+            if record == None:
+                break
+            print(record)
 
     elif user_answer == 'add flight':  # __init__(self, airline, destination, date_time,origin='London'):
         print('Add a flight')
