@@ -49,4 +49,4 @@ class Plane:
             cursor.execute(
                 'INSERT INTO Planes VALUES (' + self.capacity + ', ' + self.manufacturer + ', ' + self.model + ', ' + flight + ', ' + self.taken + ', ' + self.plane_id + ', ' + self.Airline + ')')
 
-#changeas
+#changeasasfdasf
