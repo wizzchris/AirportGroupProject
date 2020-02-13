@@ -8,7 +8,7 @@
 # Customername VARCHAR(255),
 # Destination VARCHAR(255),
 # Passport VARCHAR(255),
-# ID VARCHAR(255))
+# ID VARCHAR(255))hel
 #
 # CREATE TABLE Planes
 # (
@@ -75,7 +75,7 @@ while True:
         name = input('What is their name?\n').strip().lower()
         passportnum = input('What is their passport number?\n')
         passanger_destination = input('Where are they going?\n')
-        name =Passenger(name, passanger_destination)
+        name = Passenger(name, passanger_destination)
         name.add_passport(passportnum)
         name.add_passenger_to_flight(flights)
         passenger_database.append(name)
