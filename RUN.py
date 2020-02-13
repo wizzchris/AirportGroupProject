@@ -27,6 +27,7 @@ while True:
 
     elif user_answer == 'help':
         print(
+<<<<<<< HEAD
             'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n '
             '2.) Type "Add passenger" to add a new passenger\n '
             '3.) Type "Add passenger to flight" to add a passenger to a flight manually\n '
@@ -34,6 +35,9 @@ while True:
             '5.) Type "Planes" to check the planes\n '
             '6.) Type "Destinations" to check the flights\n '
             '7.) Type "Add Flight" to add a flight')
+=======
+            'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n 2.) Type "Add passenger" to add a new passenger\n 3.) Type "Add passenger to flight" to add a passenger to a flight manually\n 4.) Type "Boarding list" to see the boarding list\n 5.) Type "Planes" to check the planes\n 6.) Type "Destinations" to check the flights\n 7.) Type "Add Flight" to add a flight\n 8.) Type "Remove Flight" to remove a flight\n 9.) Type "Remove plane" to remove the plane')
+>>>>>>> master
 
     elif user_answer == 'register plane':  # def __init__(self, capacity, manufacturer, model, flights=None, taken='no'):
         print('Register a plane')
@@ -95,6 +99,10 @@ while True:
             print(record)
 
     elif user_answer == 'destinations':
+
+        for flight in flights:
+            print(flight.destination)
+
         rows_flights = cursor.execute('SELECT Destination, Flight_Name AS "Flight Name" FROM Flights')
         while True:
             record = rows_flights.fetchone()
@@ -111,6 +119,24 @@ while True:
         name = Flight(airline, destination, date_time)
         name.add_flight_num(plane_database)
         flights.append(name)
+
+    elif user_answer == 'remove flight':
+        print('Remove a flight')
+        flight_to_delete = input('What destination would you like to remove?\n')
+        for flight in flights:
+            if flight_to_delete == flight.destination:
+                del flight
+                cursor.execute("DROP * FROM Flights WHERE Destination = '" + flight.destination + "'")
+                docker_connect.commit()
+
+    elif user_answer == 'remove plane':
+        print('Remove a plane')
+        plane_to_delete = input('What plane would you like to remove?\n')
+        for plane in plane_database:
+            if plane_to_delete == plane.plane_id:
+                del plane
+                cursor.execute("DROP * FROM Planes WHERE Destination = '" + plane.plane_id + "'")
+                docker_connect.commit()
 
     else:
         print('Please choose a valid command')
