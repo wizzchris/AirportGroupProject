@@ -1,9 +1,8 @@
 """
 Adds a class called plane
 """
-import pyodbc
+import pyodbc # Imports the library so that we can
 
-<<<<<<< HEAD
 server = 'localhost,1433'
 databse = 'AirportGroupProject'
 username = 'SA'
@@ -32,7 +31,9 @@ class Plane:
         self.manufacturer = manufacturer
         self.model = model
 
-        cursor.execute('INSERT INTO Planes VALUES (' + self.capacity + ', ' + self.manufacturer + ', ' + self.model + ', ' + self.flights + ', ' + self.taken + ', ' + self.plane_id + )
+        cursor.execute(
+            'INSERT INTO Planes VALUES (' + self.capacity + ', ' + self.manufacturer + ', ' + self.model + ', ' + self.flights + ', ' + self.taken + ', ' + self.plane_id +', '+ self.airline +')'
+                       )
 
     def add_flights(self, flight_list):  # Add the flights the plane is going to take
         for flight in flight_list:

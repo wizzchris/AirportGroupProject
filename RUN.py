@@ -119,7 +119,7 @@ while True:
         name =input('Please name the flight\n')
         airline = input('What is the airline?\n')
         destination = input('What is the destination?\n')
-        date_time = input('What is the date and time?\n')
+        date_time = input('What is the date and+e?\n')
         name = Flight(airline,destination,date_time)
         name.add_flight_num(plane_database)
         flights.append(name)
