@@ -3,7 +3,8 @@ class People:  # people class
         self.name = name
 
 
-class Passenger(People):  # passenger subclass of people
+class Passenger(People):        # passenger subclass of people
+
     __passenger_id = 0
 
     def __init__(self,name, destination):
@@ -23,6 +24,16 @@ class Passenger(People):  # passenger subclass of people
     def check_passport(self): # Returns the passport number
         return self.__passport
 
+
+    def check_passenger(self): # returns the passenger id
+        return self.__passenger_id
+
+# Tests
+# person_1 = Passenger('0', 'Bob')
+# person_1.add_passport('312313')
+# person_1.add_passenger('12441')
+# print(person_1.check_passenger())
+
     def check_passenger(self):  # returns the passenger id
         return self.__passenger_id
 
@@ -30,3 +41,9 @@ class Passenger(People):  # passenger subclass of people
         for flight in flight_list:
             if self.destination == flight.destination:
                 flight.boarding_list.add_a_customer(self)
+<<<<<<< HEAD
+=======
+
+#change
+
+>>>>>>> 2d20bcd7e3c36ff1752d7aead39adb17e1eb504f
