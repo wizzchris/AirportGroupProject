@@ -1,8 +1,8 @@
 
 from FlightClass import Flight
 from PeopleClass import People, Passenger
-from PlaneClass import Plane
-import pyodbc
+from PlaneClass import Plane       # lets us use classes and methods from other python files
+import pyodbc       # let us run sql commands from database (is a package)
 
 server = 'localhost,1433'
 databse = 'AirportGroupProject'
@@ -11,21 +11,21 @@ password = 'Passw0rd2018'
 # Connection object of db
 docker_connect = pyodbc.connect(
     'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + databse +
-    ';UID=' + username + ';PWD=' + password)
-cursor = docker_connect.cursor()
+    ';UID=' + username + ';PWD=' + password)        # connects to SQL
+cursor = docker_connect.cursor()        # Cursor lets us use SQL commands via python
 
 plane_database = []
 passenger_database = []
-flights = []
+flights = []        # empty lists ready to be filled by user inputs
 
-while True:
-    user_answer = input(
+while True:     # continuously loops always
+    user_answer = input(        # allows user to input their answers at the beginning of every loop
         'Hello, what would you like to do?\nType "Help" for help\nType "Exit" for exit\n\n>>> ').strip().lower()
 
     if user_answer == 'exit':
-        break
+        break       # breaks the loop if user replies with exit
 
-    elif user_answer == 'help':
+    elif user_answer == 'help': # prints these if user asks for help
         print(
             'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n '
             '2.) Type "Add passenger" to add a new passenger\n '
@@ -33,21 +33,12 @@ while True:
             '4.) Type "Boarding list" to see the boarding list\n '
             '5.) Type "Planes" to check the planes\n '
             '6.) Type "Destinations" to check the flights\n '
-            '7.) Type "Add Flight" to add a flight')
+            '7.) Type "Add Flight" to add a flight\n '
+            '8.) Type "Remove Flight" to remove a flight\n'
+            '9.) Type "Remove plane" to remove the plane')
 
-        'The Commands\nType "Help" for help\nType "Exit" to break\n 1.) Type "Register plane" to add a new plane\n ' \
-            '2.) Type "Add passenger" to add a new passenger\n ' \
-            '3.) Type "Add passenger to flight" to add a passenger to a flight manually\n ' \
-            '4.) Type "Boarding list" to see the boarding list\n ' \
-            '5.) Type "Planes" to check the planes\n ' \
-            '6.) Type "Destinations" to check the flights\n ' \
-            '7.) Type "Add Flight" to add a flight\n ' \
-            '8.) Type "Remove Flight" to remove a flight\n' \
-            '9.) Type "Remove plane" to remove the plane'
-
-    elif user_answer == 'register plane':  # def __init__(self, capacity, manufacturer, model, flights=None, taken='no'):
+    elif user_answer == 'register plane':
         print('Register a plane')
-        # input('Please name the plane.\n').strip().lower()
         capacity = input('What is the capacity of the plane?\n').strip().lower()
         manufacturer = input('Who is the manufacturer?\n').strip().lower()
         model = input('What is the model?\n').strip().lower()
